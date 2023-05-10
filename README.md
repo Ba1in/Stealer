@@ -56,4 +56,4 @@ Remember, the use of a stealer program can be illegal and unethical in many case
 
 
 
-##Edit of [addi00000's Empyrean Stealer](https://github.com/addi00000/empyrean)
+Edit of [addi00000's Empyrean Stealer](https://github.com/addi00000/empyrean)
