@@ -1,4 +1,7 @@
-"# Stealer" 
+Edit of [addi00000's Empyrean Stealer](https://github.com/addi00000/empyrean)
+
+### Stealer
+
 
 ## Features
 
