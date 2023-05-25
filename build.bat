@@ -17,7 +17,7 @@ if %errorlevel% == 9009 (
     echo git is either not installed or not added to path! You can install it here https://git-scm.com/download/win
     pause
     exit
-)
+    )
 
 py -3.10 -m pip uninstall nextcord
 py -3.10 -m pip install --upgrade psutil
